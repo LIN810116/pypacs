@@ -66,7 +66,7 @@ if __name__ == '__main__':
     server_ip = 'bioeng100.bioeng.auckland.ac.nz'
     server_port = '11112'
     aec = 'DCM4CHEE'
-    aet = 'TEST'
+    # aet = 'TEST'
 
     # orthanc on bn363773 (130.216.209.202). needs to log in to bn363773 first.
     # server_ip = '130.216.209.202'
