@@ -1,6 +1,6 @@
 {
   "server_ip": "130.216.209.202",
-  "server_port": "4242",
-  "aec": "ORTHANC",
-  "aet": null
+  "server_port": "8110",
+  "aec": "TEST",
+  "aet": "ACM1"
 }

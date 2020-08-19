@@ -60,24 +60,26 @@ def move_files(server_ip, server_port, aec, aet, study_instance_uid, series_inst
 
 
 if __name__ == '__main__':
-    # TODO: choose a pacs system you want to interact with
+    # TODO: choose a pacs system you want to interact with.
 
     # dcm4chee (old pacs) on bioeng100
-    server_ip = 'bioeng100.bioeng.auckland.ac.nz'
-    server_port = '11112'
-    aec = 'DCM4CHEE'
-    # aet = 'TEST'
+    conf_path = "../resources/conf_dcm4chee_bioeng100.json"
 
     # orthanc on bn363773 (130.216.209.202). needs to log in to bn363773 first.
-    # server_ip = '130.216.209.202'
-    # server_port = '4242'
-    # aec = 'ORTHANC'
+    # TODO. note that this one is not working at the moment.
+    #  perhaps can try pyorthanc package instead of pypx,
+    #  or need to modify orthanc's configuration.
+    # conf_path = "../resources/conf_orthanc_bn363773.json"
 
     # dcmtk node on eresearch
-    # server_ip = '130.216.209.202'
-    # server_port = '8110'
-    # aec = 'TEST'
-    # aet = 'ACM1'
+    # conf_path = "../resources/conf_dcmtk_bn363773.json"
+
+    with open(conf_path) as config_file:
+        cfg = json.load(config_file)
+    server_ip = cfg['server_ip']
+    server_port = cfg['server_port']
+    aec = cfg['aec']
+    aet = cfg['aet']
 
     # check connectivity
     status = verify_connectivity(server_ip, server_port)
