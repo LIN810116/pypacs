@@ -19,6 +19,14 @@ def verify_connectivity(server_ip, server_port):
 
 
 def get_metadata(server_ip, server_port, aec, query_settings):
+    """
+    get metadata beased on query settings
+    :param server_ip: Strings
+    :param server_port: Strings
+    :param aec: Strings
+    :param query_settings: JSON
+    :return:
+    """
     pacs_settings = {
         'executable': '/usr/bin/echoscu',
         'serverIP': str(server_ip),
