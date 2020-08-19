@@ -1,0 +1,12 @@
+numpy==1.19.1
+pfmisc==1.4.0
+pkg-resources==0.0.0
+pprint==0.1
+pudb==2019.2
+py-dateutil==2.2
+pydicom==2.0.0
+Pygments==2.6.1
+pypx==1.0.1.2
+six==1.15.0
+terminaltables==3.1.0
+urwid==2.1.1
