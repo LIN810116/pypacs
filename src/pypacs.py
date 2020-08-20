@@ -28,7 +28,7 @@ def get_metadata(server_ip, server_port, aec, query_settings):
     :return:
     """
     pacs_settings = {
-        'executable': '/usr/bin/echoscu',
+        'executable': '/usr/bin/findscu',
         'serverIP': str(server_ip),
         'serverPort': str(server_port),
         'aec': aec
