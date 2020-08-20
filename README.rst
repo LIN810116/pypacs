@@ -5,6 +5,12 @@ Install the dependencies
 ------------------------
 ::
 
+    # install system packages
+    sudo apt-get update
+    sudo apt-get install -y dcmtk
+
+    # install python packages
+    pip install --upgrade pip
     pip install -r requirements.txt
 
 Usage
