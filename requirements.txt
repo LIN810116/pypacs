@@ -1,7 +1,5 @@
 numpy==1.19.1
 pfmisc==1.4.0
-pkg-resources==0.0.0
-pprint==0.1
 pudb==2019.2
 py-dateutil==2.2
 pydicom==2.0.0
