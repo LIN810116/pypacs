@@ -99,10 +99,10 @@ def create_custom_report(metadata, fields=None, custom_fields=None):
 
     :param metadata: Dictionary.
     :param fields: Dictionary. fields for different query levels (patient, study or series)
-    :param custom_fields: TODO. List. a list of custom fields which do not provided by the metadata directly. might need to calculat or query separately.
+    :param custom_fields: TODO. List. a list of custom fields which do not provided by the metadata directly might need to be calculated or queried separately.
     :return:
     """
-    # TODO. the fields in the report are customisable providing/modifying the variable "fields"
+    # TODO. the fields in the report are customisable by providing/modifying the variable "fields"
     if fields is None:
         fields = {
             "patient": ["PatientName", "PatientID", "PatientBirthDate", "PatientAge", "PatientSex"],
