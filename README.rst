@@ -13,7 +13,7 @@ Install system packages
     sudo apt-get update
     sudo apt-get install -y dcmtk
 
-Install dependencies
+Install Python dependencies
 --------------------
 
 Installing python dependencies using a virtual environment is recommended.
@@ -23,7 +23,7 @@ Installing python dependencies using a virtual environment is recommended.
     # create a virtual environment
     python3 -m venv venv/
     # activate the virtual environment
-    . venv/bin/activate
+    source venv/bin/activate
     # install the dependencies via pip
     pip install -r requirements.txt
 
