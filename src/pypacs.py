@@ -13,8 +13,8 @@ def verify_connectivity(server_ip, server_port):
     """
     pacs_settings = {
         'executable': '/usr/bin/echoscu',
-         'serverIP': str(server_ip),
-         'serverPort': str(server_port)
+        'serverIP': str(server_ip),
+        'serverPort': str(server_port)
     }
     output = pypx.echo(pacs_settings)
     print(output)
@@ -93,6 +93,39 @@ def get_total_num_of_slices(metadata):
     return num_of_slices
 
 
+def filter_by_extra_query(metadata, extra_query):
+    studies = metadata['data']
+
+    for item in extra_query:
+        tag = item.get('tag')
+        operator = item.get('operator')
+        value = item.get('value')
+
+        if tag == "NumberOfSeriesRelatedInstances":
+            for study_idx, study in enumerate(studies):
+                if "series" in study:
+                    if operator == ">":
+                        series = [s for s in study["series"] if int(s[tag]["value"]) > value]
+                    elif operator == ">=":
+                        series = [s for s in study["series"] if int(s[tag]["value"]) >= value]
+                    elif operator == "==":
+                        series = [s for s in study["series"] if int(s[tag]["value"]) == value]
+                    elif operator == "<":
+                        series = [s for s in study["series"] if int(s[tag]["value"]) < value]
+                    elif operator == "<=":
+                        series = [s for s in study["series"] if int(s[tag]["value"]) <= value]
+                    elif operator == "!=":
+                        series = [s for s in study["series"] if int(s[tag]["value"]) != value]
+                    else:
+                        series = study["series"]
+                    study["series"] = series
+                    studies[study_idx] = study
+            # delete studies if length of series == 0
+            studies = [study for study in studies if len(study["series"]) > 0]
+            metadata['data'] = studies
+    return metadata
+
+
 def create_custom_report(metadata, fields=None, custom_fields=None):
     """
     create custom report for the metadata
@@ -105,9 +138,12 @@ def create_custom_report(metadata, fields=None, custom_fields=None):
     # TODO. the fields in the report are customisable by providing/modifying the variable "fields"
     if fields is None:
         fields = {
-            "patient": ["PatientName", "PatientID", "PatientBirthDate", "PatientAge", "PatientSex"],
-            "study": ["StudyInstanceUID", "StudyDate", "ModalitiesInStudy", "StudyDescription"],
-            "series": ["SeriesDate", "Modality", "SeriesDescription", "SeriesInstanceUID", "NumberOfSeriesRelatedInstances"]
+            "patient":
+                ["PatientName", "PatientID", "PatientBirthDate", "PatientAge", "PatientSex"],
+            "study":
+                ["StudyInstanceUID", "StudyDate", "ModalitiesInStudy", "StudyDescription"],
+            "series":
+                ["SeriesDate", "Modality", "SeriesDescription", "SeriesInstanceUID", "NumberOfSeriesRelatedInstances"]
         }
 
     report = OrderedDict()
@@ -116,7 +152,7 @@ def create_custom_report(metadata, fields=None, custom_fields=None):
     for study in studies:
         # get patient id
         patient_id = study["PatientID"]["value"]
-        if not(patient_id in report):
+        if not (patient_id in report):
             report[patient_id] = OrderedDict()
             report[patient_id]["study"] = OrderedDict()
 
@@ -144,7 +180,8 @@ def create_custom_report(metadata, fields=None, custom_fields=None):
                 for key_in_series in series:
                     # get series info
                     if key_in_series in fields["series"]:
-                        report[patient_id]["study"][study_id]["series"][series_id][key_in_series] = series[key_in_series]["value"]
+                        report[patient_id]["study"][study_id]["series"][series_id][key_in_series] = \
+                            series[key_in_series]["value"]
 
     # reorder
     for patient_id in report:
