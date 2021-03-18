@@ -14,9 +14,6 @@ if __name__ == '__main__':
     # or need to modify orthanc's configuration.
     # conf_path = "../resources/conf_orthanc_bn363773.json"
 
-    # PACS 3: dcmtk node on eresearch
-    # conf_path = "../resources/conf_dcmtk_bn363773.json"
-
     with open(conf_path) as config_file:
         cfg = json.load(config_file)
     server_ip = cfg['server_ip']
