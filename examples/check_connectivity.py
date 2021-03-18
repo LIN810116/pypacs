@@ -1,5 +1,5 @@
 import json
-from src.pypacs import verify_connectivity
+from pypacs.pypacs import verify_connectivity
 
 if __name__ == '__main__':
     # TODO: choose a PACS system you want to interact with.
@@ -14,13 +14,10 @@ if __name__ == '__main__':
     # or need to modify orthanc's configuration.
     # conf_path = "../resources/conf_orthanc_bn363773.json"
 
-    # PACS 3: dcmtk node on eresearch
-    # conf_path = "../resources/conf_dcmtk_bn363773.json"
-
     with open(conf_path) as config_file:
         cfg = json.load(config_file)
-    server_ip = cfg['server_ip']
-    server_port = cfg['server_port']
+    server_ip = cfg.get('server_ip')
+    server_port = cfg.get('server_port')
 
     # check connectivity
     status = verify_connectivity(server_ip, server_port)
