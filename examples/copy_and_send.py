@@ -1,16 +1,22 @@
 """
 Retrieve data from the pacs of your choose (sender) and send to another pacs (receiver).
-The receiver pacs needs to be configured properly in the sender pacs on the AE management page/configuration file.
 
-Also. make sure both the sender and receiver nodes are running before sending files.
-Below are the steps to set up a receiver node using storescp:
-    Prerequisites: you need have dcmtk package installed:
+Prerequisites:
+- Make sure both the sender and receiver nodes are running before sending files.
+  Below are the steps to set up a receiver node using storescp:
+    1. Prerequisites: you need have dcmtk package installed:
         - sudo apt-get update
         - sudo apt-get install -y dcmtk
-    1. Create a folder
-    2. Open a terminal from the folder
-    3. Run:
-        sudo storescp -v <portNumber> -tos 3 -dhl -ss dcm -tn
+    2. Create a folder
+    3. Open a terminal from the folder
+    4. Run:
+        - sudo storescp -v <portNumber> -tos 3 -dhl -ss dcm -tn
+
+- The receiver node/pacs needs to be configured properly in the sender pacs on the AE management page/configuration file.
+  Below are the steps to add a receiver node to the pacs on bioeng100:
+    1. On the PACS GUI, click the 'AE Management' tab on the navigation bar
+    2. Click the 'new AET' bottom on the first right column
+    3. Fill up the form, then click 'Create'
 """
 
 import json
