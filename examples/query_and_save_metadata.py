@@ -1,7 +1,7 @@
 import json
 import os
 
-from pypacs.pypacs import get_metadata, create_custom_report, save_metadata, filter_by_extra_conditions
+import pypacs
 
 if __name__ == '__main__':
     save_dir = 'out/'
@@ -33,11 +33,11 @@ if __name__ == '__main__':
     # }
 
     # get metadata
-    metadata = get_metadata(server_ip, server_port, aec, query_settings)
+    metadata = pypacs.get_metadata(server_ip, server_port, aec, query_settings)
 
-    report = create_custom_report(metadata)
+    report = pypacs.create_custom_report(metadata)
     # save custom report
     save_path = os.path.join(save_dir, save_filename)
-    save_metadata(report, save_path)
+    pypacs.save_metadata(report, save_path)
 
     print("DONE")

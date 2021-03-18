@@ -20,7 +20,8 @@ Prerequisites:
 """
 
 import json
-from pypacs.pypacs import move_files
+
+import pypacs
 
 if __name__ == '__main__':
     # TODO. get the config file of the pacs you want to access
@@ -41,7 +42,7 @@ if __name__ == '__main__':
         'SeriesInstanceUID': '1.3.12.2.1107.5.2.30.25138.30000006060120104693700002235'
     }
 
-    move_files(server_ip=server_ip, server_port=server_port, aec=aec, aet=aet, query_settings=query_settings)
+    pypacs.move_files(server_ip=server_ip, server_port=server_port, aec=aec, aet=aet, query_settings=query_settings)
 
     print("DONE")
 
