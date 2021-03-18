@@ -16,8 +16,8 @@ if __name__ == '__main__':
 
     with open(conf_path) as config_file:
         cfg = json.load(config_file)
-    server_ip = cfg['server_ip']
-    server_port = cfg['server_port']
+    server_ip = cfg.get('server_ip')
+    server_port = cfg.get('server_port')
 
     # check connectivity
     status = verify_connectivity(server_ip, server_port)
