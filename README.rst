@@ -43,7 +43,7 @@ Make sure the PACS system you want to interact with is running before running th
 To start DCM4CHEE on bioeng100, see `Starting DCM4CHEE on bioeng100`_.
 
 Note that if you want to download the files from the PACS on bioeng100 to a receiver node (e.g. on local machine),
-You need to add the receiver node/pacs to the node list in the PACS on bioeng100. See the header comment in download.py for more details.
+You need to add the receiver node/pacs to the node list in the PACS on bioeng100. See the header comment in download_files.py for more details.
 
 Starting DCM4CHEE on bioeng100
 ------------------------------
