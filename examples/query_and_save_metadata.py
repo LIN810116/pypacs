@@ -1,5 +1,5 @@
 import json
-from pypacs.pypacs import get_metadata, create_custom_report, save_metadata, filter_by_extra_query
+from pypacs.pypacs import get_metadata, create_custom_report, save_metadata, filter_by_extra_conditions
 
 if __name__ == '__main__':
     # TODO: get the config file of the pacs you want to access
@@ -37,7 +37,7 @@ if __name__ == '__main__':
         }
     ]
 
-    metadata = filter_by_extra_query(metadata, extra_query)
+    metadata = filter_by_extra_conditions(metadata, extra_query)
 
     report = create_custom_report(metadata)
     # print(report)

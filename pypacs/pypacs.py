@@ -93,7 +93,7 @@ def get_total_num_of_slices(metadata):
     return num_of_slices
 
 
-def filter_by_extra_query(metadata, extra_query):
+def filter_by_extra_conditions(metadata, extra_query):
     studies = metadata['data']
 
     for item in extra_query:
