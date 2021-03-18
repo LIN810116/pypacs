@@ -1,5 +1,5 @@
 import json
-from src.pypacs import get_metadata, create_custom_report, save_metadata, filter_by_extra_query
+from pypacs.pypacs import get_metadata, create_custom_report, save_metadata, filter_by_extra_query
 
 if __name__ == '__main__':
     # TODO: get the config file of the pacs you want to access

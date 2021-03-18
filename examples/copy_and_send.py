@@ -14,7 +14,7 @@ Below are the steps to set up a receiver node using storescp:
 """
 
 import json
-from src.pypacs import move_files
+from pypacs.pypacs import move_files
 
 if __name__ == '__main__':
     # TODO. get the config file of the pacs you want to access

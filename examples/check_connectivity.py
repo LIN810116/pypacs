@@ -1,5 +1,5 @@
 import json
-from src.pypacs import verify_connectivity
+from pypacs.pypacs import verify_connectivity
 
 if __name__ == '__main__':
     # TODO: choose a PACS system you want to interact with.
