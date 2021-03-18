@@ -1,7 +1,14 @@
 import json
+import os
+
 from pypacs.pypacs import get_metadata, create_custom_report, save_metadata, filter_by_extra_conditions
 
 if __name__ == '__main__':
+    save_dir = 'out/'
+    save_filename = 'metadata.json'
+    if not os.path.exists(save_dir):
+        os.makedirs(save_dir)
+
     # TODO: get the config file of the pacs you want to access
     conf_path = "../resources/conf_dcm4chee_bioeng100.json"
 
@@ -12,6 +19,7 @@ if __name__ == '__main__':
     aec = cfg.get('aec')
 
     # TODO. write your query here
+    # You can query by most of the DICOM tags. E.g. PatientID, Modality, StudyInstanceUID, etc.
     query_settings = {
         'PatientID': 'VL*'
     }
@@ -27,24 +35,9 @@ if __name__ == '__main__':
     # get metadata
     metadata = get_metadata(server_ip, server_port, aec, query_settings)
 
-    # # TODO. filter by extra query
-    extra_query = [
-        # NumberOfSeriesRelatedInstances
-        {
-            'tag': 'NumberOfSeriesRelatedInstances',
-            'operator': '>',
-            'value': 100
-        }
-    ]
-
-    metadata = filter_by_extra_conditions(metadata, extra_query)
-
     report = create_custom_report(metadata)
-    # print(report)
     # save custom report
-    save_metadata(report, "../out/custom_report_test.json")
-    # save metadata in the default format
-    # save_metadata(metadata, "../out/metadata.json")
-    # save_metadata(metadata['report']['json'], "../out/report.json")
+    save_path = os.path.join(save_dir, save_filename)
+    save_metadata(report, save_path)
 
     print("DONE")
