@@ -1,5 +1,6 @@
 import json
-from pypacs.pypacs import verify_connectivity
+
+import pypacs
 
 if __name__ == '__main__':
     # TODO: choose a PACS system you want to interact with.
@@ -20,7 +21,7 @@ if __name__ == '__main__':
     server_port = cfg.get('server_port')
 
     # check connectivity
-    status = verify_connectivity(server_ip, server_port)
+    status = pypacs.verify_connectivity(server_ip, server_port)
     print("Connectivity status: ", status)
 
     print("DONE")
