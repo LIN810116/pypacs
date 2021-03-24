@@ -21,15 +21,11 @@ if __name__ == '__main__':
     # TODO. write your query here
     # You can query by most of the DICOM tags. E.g. PatientID, Modality, StudyInstanceUID, etc.
     query_settings = {
-        'PatientID': 'VL*'
+        'PatientID': 'VL00001',
+        'Modality': 'MR'
     }
     # query_settings = {
-    #     'PatientID': 'VL00001',
-    #     'Modality': 'MR'
-    # }
-    # query_settings = {
-    #     'PatientID': 'CL*',
-    #     'Modality': 'MR',
+    #     'PatientID': 'VL*'
     # }
 
     # get metadata
