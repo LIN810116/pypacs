@@ -19,7 +19,7 @@ If you want to download the images to your local machine, see below:
        Below are the steps to add a receiver node to the DCM4CHEE PACS on bioeng100:
         1. On the PACS GUI, click the 'AE Management' tab on the navigation bar
         2. Click the 'new AET' bottom on the first right column
-        3. Enter "AE TitleFill", "Hostname"(the ip address of the receiver node) & "Port"(the port number of the receiver node)
+        3. Enter "AE Title", "Hostname"(the ip address of the receiver node) & "Port"(the port number of the receiver node)
         4. Click "echo" to check connectivity, then click "create".
 """
 
